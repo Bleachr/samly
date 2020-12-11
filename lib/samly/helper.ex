@@ -24,12 +24,21 @@ defmodule Samly.Helper do
   @spec get_consume_uri(nil | binary, binary) :: nil | charlist
   def get_consume_uri(nil, _idp_id), do: nil
 
+  # This is what the real library does.
+  # def get_consume_uri(sp_base_url, nil) when is_binary(sp_base_url) do
+  #   "#{sp_base_url}/sp/consume" |> String.to_charlist()
+  # end
+
+  # def get_consume_uri(sp_base_url, idp_id) when is_binary(sp_base_url) do
+  #   "#{sp_base_url}/sp/consume/#{idp_id}" |> String.to_charlist()
+  # end
+
   def get_consume_uri(sp_base_url, nil) when is_binary(sp_base_url) do
-    "#{sp_base_url}/sp/consume" |> String.to_charlist()
+    "#{sp_base_url}" |> String.to_charlist()
   end
 
   def get_consume_uri(sp_base_url, idp_id) when is_binary(sp_base_url) do
-    "#{sp_base_url}/sp/consume/#{idp_id}" |> String.to_charlist()
+    "#{sp_base_url}" |> String.to_charlist()
   end
 
   @spec get_logout_uri(nil | binary, binary) :: nil | charlist
